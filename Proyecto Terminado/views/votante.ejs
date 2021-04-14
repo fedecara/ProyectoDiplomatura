@@ -1,0 +1,33 @@
+<% include header.ejs %>
+    <div class="container">
+        <div class="card mt-5 text-light bg-dark shadow-lg">
+            <div class="card-header">
+                <h2 class="card-title text-center">Votante nuevo</h2>
+            </div>
+            <div class="card text-primary shadow-lg text-center">
+                <div class="card-body">
+                    <div class="card-title mt5 align-self-center">
+                        <h3>Ingrese los Datos</h3>
+                    </div>
+                    <div class="formLog  ">
+                        <form action="/votante" method="POST">
+                            <div class="form-group">
+                            <input class="form-control" type="text" name="nombre" placeholder="Nombre" required>
+                            <input class="form-control" type="text" name="apellido" placeholder="Apellido" required>
+                            <input class="form-control" type="number" name="dni"  placeholder="DNI"  maxlength="8" required >
+                            <select class="form-control" type="text" name="genero" placeholder="Genero..." value="" required>
+                                    <option value="">Seleccione un género</option>
+                                    <option value="Masculino">Masculino</option>
+                                    <option value="Femenino">Femenino</option>
+                            </div>
+                            <div class="btnVot">
+                                <input class="btn btn-success btn-lg" type="submit" value="Votar">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<% include footer.ejs %>

@@ -1,0 +1,27 @@
+body {
+
+    /* Ubicación de la imagen */
+    
+    background-image: url(../images/cordoba.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+ 
+    };
+
+.cardbody{
+    margin-top:20%
+
+}
+.card-img-top { border-radius: 50%;}
+
+footer{
+    background: #333;
+	color: white;
+    text-align: center;
+    margin: 0;
+	padding: 20px;
+	margin-top: 40px;
+}
+

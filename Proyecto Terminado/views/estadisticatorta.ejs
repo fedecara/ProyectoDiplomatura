@@ -1,0 +1,80 @@
+<% include header.ejs %>
+
+<aside>
+
+<script src="javascripts/canvas.js"></script>
+            <h1 class="card-title mt-5 text-light text-center">
+                Estadisticas de Votacion
+            </h1>
+	<style>
+	.leyenda  ul {list-style-type:none;padding:0 10px;background-color: white}
+	.leyenda  ul>li {font-size:14px;}
+	.leyenda  ul>li>span {width:12px;height:12px;display:inline-block;margin-right:3px;}
+	</style>
+
+<div style="float:right;margin-right:400px;margin-top:100px">
+	<canvas id="canvas1"></canvas>
+	<div id="leyenda1" class="leyenda"></div>
+	<div class="btnVot">
+		<a class="btn btn-success btn-lg btn-block"  href="/">Volver</a>
+	</div>
+</div>
+</div>
+
+
+<script>
+ 		var valores={
+ 			"<%= cantidadvotos[0].partido %>": {valor: <%= cantidadvotos[0].cant%>,color:"blue"},
+ 			"<%= cantidadvotos[1].partido %>": {valor: <%= cantidadvotos[1].cant%>,color:"red"},
+ 			"<%= cantidadvotos[2].partido %>": {valor: <%= cantidadvotos[2].cant%>,color:"green"},
+ 			"<%= cantidadvotos[3].partido %>": {valor: <%= cantidadvotos[3].cant%>,color:"Orange"},
+ 			"<%= cantidadvotos[4].partido %>": {valor: <%= cantidadvotos[4].cant%>,color:"Cyan"},
+ 			"<%= cantidadvotos[5].partido %>": {valor: <%= cantidadvotos[5].cant%>,color:"brown"}
+ 		}
+// generamos el primer pastel
+var pastel=new miPastel("canvas1",300,300,valores);
+pastel.dibujar();
+pastel.ponerPorCiento("white");
+pastel.ponerLeyenda("leyenda1");
+
+</script>
+</aside>
+<div class="container mt-5">
+    <div class="card shadow-lg bg-dark" style="width:500px">
+
+        <div class="card-body text-light" >
+
+        <% cantidadvotos.forEach((Candidato) => { 
+            
+            var porcentaje = Candidato.cant* 100 / total;
+            porcentaje = porcentaje.toFixed(2);
+
+            %>
+
+            <div class="row" style="margin-top: 50px"  >
+                
+                <div class="col-md-6 col-lg-6 " >
+					<div>
+						<img style="width:150px;height:150px" style="vertical-align: right" src=<%= Candidato.imagen %>  >
+					</div>
+				</div>
+
+				<div class="col-md-6 col-lg-6 " > 
+					<p>Precidente: <%= Candidato.nombre %></p>
+                    <p>Partido Polito: <%= Candidato.partido %></p>
+                    <p>Cantidad de Votos: <%= Candidato.cant%></p>
+					<div class="progress" style="height: 40px;width: 225px">
+						<div class="progress-bar progress-bar-animated text-dark" role="progressbar" style="width: <%= porcentaje %>%" aria-valuenow="<%= porcentaje %>" aria-valuemin="0" aria-valuemax="100"> <%= porcentaje %>%
+						</div>
+					</div>	
+				</div>
+
+            </div>
+            
+		<% }); %>
+    </div>
+</div>
+
+
+<% include footer.ejs %>
+

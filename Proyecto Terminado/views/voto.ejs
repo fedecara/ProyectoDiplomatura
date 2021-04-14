@@ -1,0 +1,38 @@
+<% include header.ejs %>
+
+<div class="conteiner">
+    <div class="card mt-5  bg-transparent text-center ">
+        <div class="card-header ">
+            <h1 class="card-title  text-light">Candidatos Elecciones 2019</h1>
+        </div>
+        <div class="card-columns text-light " style="widows: 100px"> 
+            <form action="/candidato" method="POST">
+           <% for(var i=0; i < listcandidato.length ; i++) { %>
+                <img class="card-img-top img-circle " alt="card image" style="width:250px;height:290px;" src=<%= listcandidato[i].Imagen %> >
+                    <div class="card-body">
+                        <h3 class="card-title">
+                            Precidente:
+                            <%= listcandidato[i].Precidentenombre %>
+                            
+                        </h3>
+                        <p class="card-text">Partido: <%= listcandidato[i].Partidopolitico %></p>
+                        <div class="radio">
+                            <input type="radio" name="Candidatos"  value=<%= listcandidato[i].identificador %> >
+                        </div>
+                        
+                    </div>
+           
+            <%}%>
+            <div class="btnVot">
+                <input class="btn btn-success btn-lg btn-block" type="submit" value="Votar" >
+            </div>
+        
+            </form>
+        </div>
+
+    </div>
+
+</div>
+    
+<% include footer.ejs %>
+
